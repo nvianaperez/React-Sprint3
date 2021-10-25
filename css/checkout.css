@@ -3,7 +3,11 @@
 body {
     font-family: Poppins;
 }
-#errorFirstName, #errorLastName, #errorEmail, #errorPassword, #errorPhone, #errorComplete {
+#errorFirstName, #errorLastName, #errorEmail, #errorPassword, #errorPhone {
+    display: none;
+}
+
+#errorCompleteFirstName,  #errorCompleteLastName, #errorCompleteEmail, #errorCompletePassword, #errorCompletePhone, #errorCompleteAddress {
     display: none;
 }
 

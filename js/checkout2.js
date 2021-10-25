@@ -50,60 +50,50 @@ var validarFormulario = (e) => {
     switch (e.target.name) {
         case 'firstName':
             checkCampo(expresionesRegulares.nombre, e.target, 'firstName', 'errorFirstName');
-            checkComplete(e.target);
-        break;
+            checkComplete(e.target, 'errorCompleteFirstName');
+            break;
         case 'lastName':
-            checkCampo(expresionesRegulares.nombre, e.target, 'lastName', 'errorLastName' );
-            checkComplete(e.target);
-        break;
-        case '`password`':
+            checkCampo(expresionesRegulares.nombre, e.target, 'lastName', 'errorLastName');
+            checkComplete(e.target, 'errorCompleteLastName');
+            break;
+        case 'password':
             checkCampo(expresionesRegulares.password, e.target, 'password', 'errorPassword');
-            checkComplete(e.target);
-        break;
+            checkComplete(e.target, 'errorCompletePassword');
+            break;
         case 'email':
             checkCampo(expresionesRegulares.correo, e.target, 'email', 'errorEmail');
-            checkComplete(e.target);
-        break;
+            checkComplete(e.target, 'errorCompleteEmail');
+            break;
         case 'phone':
             checkCampo(expresionesRegulares.telefono, e.target, 'phone', 'errorPhone');
-            checkComplete(e.target);
-        break;
+            checkComplete(e.target, 'errorCompletePhone');
+            break;
         default:
-            checkComplete(e.target);
+            checkComplete(e.target, 'errorCompleteAddress');
     }
 }
 
 var checkCampo = (expresion, input, campo, error1) => {
-    if(expresion.test(input.value)) {
+    if (expresion.test(input.value)) {
         document.getElementById(`${campo}`).classList.add('formulario_input-validate');
         document.getElementById(`${campo}`).classList.remove('formulario_input-noValidate');
-        document.getElementById(`${error1}`).style.display="none"; 
+        document.getElementById(`${error1}`).style.display = "none";
         // document.querySelector(`${campo} p`).style.display="none";
     } else {
         document.getElementById(`${campo}`).classList.add('formulario_input-noValidate');
-        document.getElementById(`${error1}`).style.display="block";
+        document.getElementById(`${error1}`).style.display = "block";
         // document.querySelector(`${campo} p`).style.display="block";
     }
 }
 
-var checkComplete = (input) => {
-    if (input.value != " " || input.value.indexOf(" ") == 0 || input.value.lenght >= 3) {
-        // document.getElementById(`${campo}`).classList.add('formulario_input-validate');
-        // document.getElementById(`${campo}`).classList.remove('formulario_input-noValidate');
-        document.getElementById('errorComplete').style.display="none";
-    } else { 
-        // document.getElementById(`${campo}`).classList.add('formulario_input-noValidate');
-        document.getElementById('errorComplete').style.display="block";
+var checkComplete = (input, error2) => {
+    if (input.value != " " && input.value.indexOf(" ") == -1 && input.value.lenght >= 3) {
+        document.getElementById(`${error2}`).style.display = "none";        
+    } else {
+        document.getElementById(`${error2}`).style.display = "block";
     }
 }
 
-
-// var checkAddress = (address) => {
-//     if (address == "" || address.indexOf(" ") == 0 || address.lenght < 3) {
-//         document.getElementById('address').style.display="block";
-//     } else { document.getElementById('address').style.display="none";
-//     }
-// }
 
 inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
@@ -115,7 +105,7 @@ se ejecuta la función validarFormulario*/
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
 });
-/*cuando presiono boton que es type submit --> se llama a una función tipo arrow 
+/*cuando presiono boton que es type submit --> se llama a una función tipo arrow
 en la función evento se pasa por parámetro y se ejecuta preventDefault()
 preventDefault() no guarda nada, la página no cambia*/
 
