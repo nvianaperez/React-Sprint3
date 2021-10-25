@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/checkout.css">
+    <title>Checkout Page</title>
+</head>
+
+<body>
+    <!-- header -->
+    <h1 class="text-center head m-4">Checkout Page</h1>
+    <!-- header -->
+    <!-- icons starts here -->
+    <div class="icons">
+        <div class="row mr-0">
+            <div class="col-sm-6">
+                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-dollar-sign bg p-4 mr-4"></i>Cash on Delivery</h2>
+            </div>
+            <div class="col-sm-6 ">
+                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-arrows-alt-h bg p-4 mr-4"></i>100% Return</h2>
+            </div>
+        </div>
+
+        <div class="row mr-0">
+            <div class="col-sm-6">
+                <h2 class="my-3 mx-5 bord shadow"><i class="far fa-thumbs-up bg p-4 mr-4"></i>Quality Assured</h2>
+            </div>
+            <div class="col-sm-6 ">
+                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-stopwatch bg p-4 mr-4"></i>Delivery on time</h2>
+            </div>
+        </div>
+    </div>
+    <!-- icons end here -->
+
+    <!-- Checkout starts here -->
+
+    <form action="#" class="formulario needs-validation" id="formulario">
+        <!--needs-validation when submit-->
+        <div class="row bord p-5 shadow m-5">
+            <div class="col-sm-6">
+                <div class="formulario_grupo mt-3 row" id="form_firstName">
+                    <label for="firstName" class="formulario_label my-auto my-auto"></label>
+                    <!-- LABEL FOR same as id attribute of the input -->
+                    <h5>First Name :</h5>
+                    <input type="text" class="formulario_input ml-3 input name rounded p-2" name="firstName"
+                        id="firstName" placeholder="First Name" required />
+                    <p id="errorFirstName">Only alphabet in name</p>
+                    <p id="errorComplete">Complete fields with 3 characters minimum</p>
+                </div>
+                <div class="formulario_grupo mt-3 row" id="form_email">
+                    <label for="email" class="formulario_label my-auto my-auto"></label>
+                    <h5>Email :</h5>
+                    <input type="email" class="formulario_input ml-3 input email rounded p-2" name="email"
+                        id="email" placeholder="Email" />
+                    <p id="errorEmail">Email is not valid</p>
+                    <p id="errorComplete">Complete fields with 3 characters minimum</p>
+                </div>
+                <div class="formulario_grupo mt-3 row" id="form_address">
+                    <label for="address" class="formulario_label my-auto my-auto"></label>
+                    <h5>Address :</h5>
+                    <input type="text" class="formulario_input ml-3 input rounded p-2" name="address" 
+                        id="address" placeholder="Address" />
+                    <p id="errorAddress">Address is not valid</p>
+                    <p id="errorComplete">Complete fields with 3 characters minimum</p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="formulario_grupo mt-3 row" id="form_lastName">
+                    <label for="lastName" class="formulario_label my-auto my-auto"></label>
+                    <h5>Last Name :</h5>
+                    <input type="text" class="formulario_input ml-3 input name rounded p-2" name="lastName"
+                        id="lastName" placeholder="Last Name" />
+                    <p id="errorLastName">Numbers in the name are not valid</p>
+                    <p id="errorComplete">Complete fields with 3 characters minimum</p>
+                </div>
+                <div class="formulario_grupo mt-3 row" id="form_password">
+                    <label for="password" class="formulario_label my-auto my-auto"></label>
+                    <h5>Password :</h5>
+                    <input type="password" class="formulario_input ml-3 input password rounded p-2" name="password"
+                        id="password" title="(4-8 characters)" placeholder="Password" />
+                    <p id="errorPassword">Enter a correct password</p>
+                    <p id="errorComplete">Complete fields with 3 characters minimum</p>
+                </div>
+                <div class="formulario_grupo mt-3 row" id="form_phone">
+                    <label for="phone" class="formulario_label my-auto my-auto"></label>
+                    <h5>Phone Number :</h5>
+                    <input type="number" class="formulario_input ml-3 input phone rounded p-2" name="phone"
+                        id="phone" placeholder="Phone No." />
+                    <p id="errorPhone">Invalid phone number!!</p>
+                    <p id="errorComplete">Complete fields with 3 characters minimum</p>
+                </div>
+            </div>
+        </div>
+
+                <!-- Checkout ends here -->
+        <!-- Buy button -->
+        <div class="m-5 final text-right">
+            <button type="submit" id="btn-name" class="p-2 px-4 btn btn-primary shadow-lg"
+                onclick="validarFormulario(e)">
+                <i class="fas fa-cart-arrow-down p-2"></i>Buy
+            </button>
+
+            <!-- <button type="submit" id="btn-name" class="p-2 px-4 btn btn-primary shadow-lg"
+                onclick="validateLastName(document.getElementById('lastName').value)">
+                <i class="fas fa-cart-arrow-down p-2"></i>Buy - Last Name
+            </button> -->
+
+            <!-- <button type="submit" id="btn-email" class="p-2 px-4 btn btn-primary shadow-lg"
+                onclick="validateEmail(document.getElementById('email').value)">
+                <i class="fas fa-cart-arrow-down p-2"></i>Buy - email
+            </button> -->
+
+            <!-- <button type="submit" id="btn-password" class="p-2 px-4 btn btn-primary shadow-lg"
+                onclick="validatePassword(document.getElementById('password').value)">
+                <i class="fas fa-cart-arrow-down p-2"></i>Buy - password
+            </button> -->
+
+            <!-- <button type="submit" id="btn-address" class="p-2 px-4 btn btn-primary shadow-lg"
+                onclick="validatePhone(document.getElementById('address').value)">
+                <i class="fas fa-cart-arrow-down p-2"></i>Buy - address
+            </button> -->
+  
+            <!-- <button type="submit" id="btn-phone" class="p-2 px-4 btn btn-primary shadow-lg"
+                onclick="validatePhone(document.getElementById('phone').value)">
+                <i class="fas fa-cart-arrow-down p-2"></i>Buy - phone
+            </button> -->
+
+            <!-- onclick="validateEmail(form.email.value)"; altre manera d'arribar al valor de l'element-->
+        </div>
+    </form>
+    <!-- Buy Button -->
+    <!-- script tags -->
+    <script src="js/checkout2.js"></script>
+
+</body>
+
+</html>

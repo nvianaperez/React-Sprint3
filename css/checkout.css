@@ -3,6 +3,18 @@
 body {
     font-family: Poppins;
 }
-#errorPassword, #errorName, #errorPhone {
+#errorFirstName, #errorLastName, #errorEmail, #errorPassword, #errorPhone, #errorComplete {
     display: none;
 }
+
+.formulario_input-validate {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formulario_input-noValidate {
+	color: #bb2929;
+    opacity: 1;
+    border: 5px solid #bb2929;
+}
+
