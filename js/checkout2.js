@@ -49,45 +49,42 @@ var campos = {
 var validarFormulario = (e) => {
     switch (e.target.name) {
         case 'firstName':
-            checkCampo(expresionesRegulares.nombre, e.target, 'firstName', 'errorFirstName');
-            checkComplete(e.target, 'firstName', 'errorCompleteFirstName');
+            checkCampo(expresionesRegulares.nombre, e.target, 'firstName', 'errorFirstName', 'errorCompleteFirstName');
             break;
         case 'lastName':
-            checkCampo(expresionesRegulares.nombre, e.target, 'lastName', 'errorLastName');
-            checkComplete(e.target, 'lastName', 'errorCompleteLastName');
+            checkCampo(expresionesRegulares.nombre, e.target, 'lastName', 'errorLastName', 'errorCompleteLastName');
             break;
         case 'password':
-            checkCampo(expresionesRegulares.password, e.target, 'password', 'errorPassword');
-            checkComplete(e.target, 'password', 'errorCompletePassword');
+            checkCampo(expresionesRegulares.password, e.target, 'password', 'errorPassword', 'errorCompletePassword');
             break;
         case 'email':
-            checkCampo(expresionesRegulares.correo, e.target, 'email', 'errorEmail');
-            checkComplete(e.target, 'email', 'errorCompleteEmail');
+            checkCampo(expresionesRegulares.correo, e.target, 'email', 'errorEmail', 'errorCompleteEmail');
             break;
         case 'phone':
-            checkCampo(expresionesRegulares.telefono, e.target, 'phone', 'errorPhone');
-            checkComplete(e.target, 'phone', 'errorCompletePhone');
+            checkCampo(expresionesRegulares.telefono, e.target, 'phone', 'errorPhone', 'errorCompletePhone');
             break;
         default:
-            checkComplete(e.target, 'address', 'errorCompleteAddress');
+            checkAddress(e.target, 'address', 'errorCompleteAddress');
     }
 }
 
-var checkCampo = (expresion, input, campo, error1) => {
-    if (expresion.test(input.value)) {
+var checkCampo = (expresion, input, campo, error1, error2) => {
+    if (expresion.test(input.value) && input.value != " " && input.value.indexOf(" ") == -1 && input.value.length >= 3) {
         document.getElementById(`${campo}`).classList.add('formulario_input-validate');
         document.getElementById(`${campo}`).classList.remove('formulario_input-noValidate');
         document.getElementById(`${error1}`).style.display = "none";
+        document.getElementById(`${error2}`).style.display = "none";        
         // document.querySelector(`${campo} p`).style.display="none";
     } else {
         document.getElementById(`${campo}`).classList.add('formulario_input-noValidate');
         document.getElementById(`${error1}`).style.display = "block";
+        document.getElementById(`${error2}`).style.display = "block";
         // document.querySelector(`${campo} p`).style.display="block";
     }
 }
 
-var checkComplete = (input, campo, error2) => {
-    if (input.value != " " && input.value.indexOf(" ") == -1 && input.value.lenght >= 3) {
+var checkAddress = (input, campo, error2) => {
+    if (input.value != " " && input.value.indexOf(" ") == -1 && input.value.length >= 3) {
         document.getElementById(`${campo}`).classList.add('formulario_input-validate');
         document.getElementById(`${campo}`).classList.remove('formulario_input-noValidate');
         document.getElementById(`${error2}`).style.display = "none";        
