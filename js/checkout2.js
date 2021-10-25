@@ -50,26 +50,26 @@ var validarFormulario = (e) => {
     switch (e.target.name) {
         case 'firstName':
             checkCampo(expresionesRegulares.nombre, e.target, 'firstName', 'errorFirstName');
-            checkComplete(e.target, 'errorCompleteFirstName');
+            checkComplete(e.target, 'firstName', 'errorCompleteFirstName');
             break;
         case 'lastName':
             checkCampo(expresionesRegulares.nombre, e.target, 'lastName', 'errorLastName');
-            checkComplete(e.target, 'errorCompleteLastName');
+            checkComplete(e.target, 'lastName', 'errorCompleteLastName');
             break;
         case 'password':
             checkCampo(expresionesRegulares.password, e.target, 'password', 'errorPassword');
-            checkComplete(e.target, 'errorCompletePassword');
+            checkComplete(e.target, 'password', 'errorCompletePassword');
             break;
         case 'email':
             checkCampo(expresionesRegulares.correo, e.target, 'email', 'errorEmail');
-            checkComplete(e.target, 'errorCompleteEmail');
+            checkComplete(e.target, 'email', 'errorCompleteEmail');
             break;
         case 'phone':
             checkCampo(expresionesRegulares.telefono, e.target, 'phone', 'errorPhone');
-            checkComplete(e.target, 'errorCompletePhone');
+            checkComplete(e.target, 'phone', 'errorCompletePhone');
             break;
         default:
-            checkComplete(e.target, 'errorCompleteAddress');
+            checkComplete(e.target, 'address', 'errorCompleteAddress');
     }
 }
 
@@ -86,10 +86,13 @@ var checkCampo = (expresion, input, campo, error1) => {
     }
 }
 
-var checkComplete = (input, error2) => {
+var checkComplete = (input, campo, error2) => {
     if (input.value != " " && input.value.indexOf(" ") == -1 && input.value.lenght >= 3) {
+        document.getElementById(`${campo}`).classList.add('formulario_input-validate');
+        document.getElementById(`${campo}`).classList.remove('formulario_input-noValidate');
         document.getElementById(`${error2}`).style.display = "none";        
     } else {
+        document.getElementById(`${campo}`).classList.add('formulario_input-noValidate');
         document.getElementById(`${error2}`).style.display = "block";
     }
 }
