@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <title>Sprint 3 ShopNow</title>
+
+</head>
+
+<body>
+
+    <h1>Sprint 3 Shop</h1>
+    <button type="button" onclick="addItemToCart
+    (0)" class="btn btn-primary">Add to cart</button>
+
+    <script>
+
+        //creo array vacío
+        var cart = [];
+        //crear objeto Item a través de la función constructora 
+        var Item = function (name, price, count) {
+            this.name = name;
+            this.price = price;
+            this.count = count;
+        }
+        //cuando añade al carrito tiene en cuenta el nombre y suma al count
+        function addItemToCart(name, price, count) {
+            for (let i in cart) {
+                if (cart[i].name === name) {
+                    cart[i].count += count;
+                    return;
+                }
+            }
+            var item = new Item(name, price, count); // crear objeto item y lo añade al array cart
+            cart.push(item);
+        }
+        //utilizo la función para añadir items al array
+        addItemToCart('Apple', 1.6, 1);
+        addItemToCart('Pears', 2.3, 1);
+        addItemToCart('Apple', 1.6, 4);
+
+        console.log(cart);
+        console.log(cart[0].name);
+
+
+        /*usando this en la función dentro del button, le paso el componente por parámetro y lo igualo al id del button id="cart[0]"-- no coje el elemento del array, coge un string.
+        function addItemToCart
+        (comp){
+        let id = comp.id;
+        console.log(id);
+        }*/
+
+        /*capturar un elemento del documento y agregar una función al hacer click.
+        const resultado = document.getElementById("resultado"); por id
+        const btnAgregar = document.querySelector(".btn-info"); por clase
+        let contador = 0;
+
+        btnAgregar.addEventListener("click", () => {
+        console.log("diste click");
+        contador++;
+        pintarContador();
+        });
+
+        pintarContador = () => {
+        resultado.textContent = contador;
+        };*/
+
+
+// función que agrega los elementos repetidos del cartList.. no sale, pero es por aquí con OBJETOS
+//         function generateCart(cartList) {
+//             cart = [];
+//             for (let i = 0; i < cartList.length; i++) {
+//                 let nuevo = {
+//                     name: cartList[i].name,
+//                     price: cartList[i].price,
+//                     type: cartList[i].type,
+//                     quantity: 1,
+//                     subtotal: cartList[i].price,
+//                     subtotalWithDiscount: 0,
+//                 }
+//                 if (cart.length) {
+//                     for (let j = 0; j < cart.length; j++) {
+//                         if (cart[j].name === cartList[i].name) {
+//                             cart[j].quantity = cart[j].quantity + 1;
+//                             cart[j].subtotal = cart[j].quantity * cart[j].price;
+//                         } else {
+//                             cart.push(cartList[i]);
+//                         }
+//                     }
+
+//                 } else {
+//                     cart.push(nuevo);
+//                 }
+//             }
+//             console.log(cart);
+//         }
+
+
+    </script>
+
+
+
+
+    <!-- ************************************************ -->
+    <!-- script tags -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script> -->
+
+</body>
+
+</html>

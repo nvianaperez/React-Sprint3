@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <title>Prueba 5</title> 
+<style type="text/css">
+   h2  { width: 250px; float: left; padding-left: 3em ; font-family: arial; }
+   #limpiar { clear: both; }
+   p, a { font: bold 1.2em arial; text-decoration: none; }
+</style>
+<script type="text/javascript">
+  var urls = ["http://www.google.com","http://yahoo.es","http://es.wikipedia.org"];
+  function direccion(num) {
+         var enlace = document.getElementById("enlace");
+         enlace.href = urls[num];
+         for (i in urls){
+             document.getElementsByTagName("h2")[i].style.color = "black";
+             document.getElementsByTagName("h2")[i].style.fontFamily = "arial";
+             }
+         document.getElementsByTagName("h2")[num].style.color = "red";
+         document.getElementsByTagName("h2")[num].style.fontFamily = "Verdana";
+         }
+</script>
+</head>
+<body>
+  <h1>Acceso a atributos y código CSS</h1>
+  <p>El siguiente enlace puede apuntar a alguno de estos sitios: Haz clic primero 
+    en el sitio al que quieras ir (éste cambiará de aspecto) y luego en el enlace. 
+    El enlace se abrirá en una página aparte.</p>
+  <h2 id="direccion1" onclick="direccion(0)">Google</h2>
+  <h2 id="direccion2" onclick="direccion(1)">Yahoo</h2>
+  <h2 id="direccion3" onclick="direccion(2)">Wikipedia</h2>
+  <p id="limpiar"></p>
+  <a id="enlace" href="#" target="_blank">Enlace multidireccional</a>
+</body>
+</html>
+
+<!-- FUENTE: https://aprende-web.net/javascript/js5_5.php
+
+Veamos los pasos seguidos para crear el código javascript de esta página:
+
+En primer lugar creamos el array que contiene las direcciones a las que va a apuntar el enlace.
+Creamos después la funcion que va poder cambiar el contenido del enlace, 
+esta función también va a permitir cambiar el aspecto del nombre de referencia del enlace. 
+para ello en cada una de las etiquetas de referencia se hace una llamada a la función 
+(atributo onclick, y en el paréntesis se escribe el numero de orden de la direccion, según el array.
+Dentro de la función accedemos al enlace, y le añadimos el atributo que le corresponde 
+según el número : enlace.href = urls[num].
+Las siguientes sentencias cambian el aspecto de las etiquetas h2, para ello, 
+en primer lugar, en un bucle restauramos las propiedades CSS iniciales que tienen estas etiquetas, 
+y fuera del bucle cambiamos las propiedades de la etiqueta sobre la que hemos pulsado. 
+Lo de restaurar las propiedades en un bucle es porque si pulsamos más de una etiqueta, 
+al pulsar la segunda, la anterior quedará como estaba antes, de manera que sólo tengamos una etiqueta destacada.
+-->
